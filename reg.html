@@ -63,6 +63,7 @@
             <div class="space-y-3">
                 <input type="text" name="leaderName" placeholder="Full Name" required class="w-full px-4 py-2 border border-gray-300 rounded-lg" />
                 <input type="email" name="leaderEmail" placeholder="Email Address" required class="w-full px-4 py-2 border border-gray-300 rounded-lg" />
+                <input type="tel" name="leaderPhone" placeholder="Phone Number" required class="w-full px-4 py-2 border border-gray-300 rounded-lg" />
             </div>
         </div>
 
@@ -94,8 +95,8 @@
             </div>
           <div class="py-2">
             <h2 class="font-semibold text-[#563b1e]">Student Ambassador: Manushri K</h2>
-            <p>Email: iuclubb@gmail.com</p>
-            <p>Phone: +91 [Number]</p>
+            <p>Email: kletech.iucee@gmail.com</p>
+            <p>Phone: +91 97395 94110</p>
           </div>
         </div>
 
@@ -162,7 +163,7 @@
         const data = Object.fromEntries(formData.entries());
 
         try {
-            const response = await fetch('https://iucee-club-backend.onrender.com/api/register', {
+            const response = await fetch('https://iucee-backend-events.onrender.com/api/register', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(data)

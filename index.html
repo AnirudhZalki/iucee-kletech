@@ -20,6 +20,7 @@ body {
   position: absolute;
   top: 0;
   left: 0;
+  z-index: 0;
 }
 
 /* Smooth section spacing */
@@ -32,32 +33,36 @@ section {
 
 <body class="scroll-smooth">
 
-<!-- ================= NAVBAR ================= -->
 <header class="sticky top-0 z-50 backdrop-blur-xl bg-[#f4cba1]/80 shadow-xl border-b border-white/20">
 <div class="max-w-7xl mx-auto flex justify-between items-center px-6 py-4">
 
-<img src="images/logo.png" class="w-[170px]">
-<img src="images/iu.png" class="w-[120px]">
+<div class="flex items-center gap-4">
+    <img src="images/logo.png" class="w-[140px] md:w-[170px]" alt="Logo">
+    <img src="images/iu.png" class="w-[90px] md:w-[120px]" alt="IU Logo">
+</div>
 
-          <ul id="nav-links" class="hidden md:flex flex-col md:flex-row md:space-x-6 space-y-4 md:space-y-0 text-md font-medium absolute md:static top-16 left-0 w-full md:w-auto bg-[#ffface]  md:bg-transparent px-6 py-4 md:py-0">
-            <li><a href="index.html" class="font-bold text-[#563b1e] hover:text-[#f5ac04]">Home</a></li>
-            <li><a href="about.html" class="font-bold text-[#563b1e] hover:text-[#f5ac04]">About</a></li>
-            <li><a href="mentor.html" class="font-bold text-[#563b1e] hover:text-[#f5ac04]">Mentorship</a></li>
-            <li><a href="vol.html" class="font-bold text-[#563b1e] hover:text-[#f5ac04]">Team</a></li>
-            <li><a href="iasf25.html" class="font-bold text-[#563b1e] hover:text-[#f5ac04]">IASF 2025</a></li>
-            <li><a href="com.html" class="font-bold text-[#563b1e] hover:text-[#f5ac04]">Community Reachout</a></li>
-            <li><a href="reg.html" target="_blank" class="font-bold text-[#563b1e] hover:text-[#f5ac04]">Register</a></li>
-          </ul>
+<button id="menu-toggle" class="md:hidden text-[#563b1e] focus:outline-none text-3xl">
+  ☰
+</button>
+
+<ul id="nav-links" class="hidden md:flex flex-col md:flex-row md:space-x-6 space-y-4 md:space-y-0 text-md font-medium absolute md:static top-full left-0 w-full md:w-auto bg-[#f4cba1] md:bg-transparent px-6 py-4 md:py-0">
+  <li><a href="index.html" class="font-bold text-[#563b1e] hover:text-[#f5ac04]">Home</a></li>
+  <li><a href="about.html" class="font-bold text-[#563b1e] hover:text-[#f5ac04]">About</a></li>
+  <li><a href="mentor.html" class="font-bold text-[#563b1e] hover:text-[#f5ac04]">Mentorship</a></li>
+  <li><a href="vol.html" class="font-bold text-[#563b1e] hover:text-[#f5ac04]">Team</a></li>
+  <li><a href="iasf25.html" class="font-bold text-[#563b1e] hover:text-[#f5ac04]">IASF 2025</a></li>
+  <li><a href="com.html" class="font-bold text-[#563b1e] hover:text-[#f5ac04]">Community Reachout</a></li>
+  <li><a href="reg.html" target="_blank" class="font-bold text-[#563b1e] hover:text-[#f5ac04]">Register</a></li>
+</ul>
 
 </div>
 </header>
 
-<!-- ================= HERO ================= -->
 <section class="h-[90vh] flex items-center justify-center text-center overflow-hidden">
 
 <canvas id="bgCanvas"></canvas>
 
-<div class="relative z-10 bg-black/50 backdrop-blur-2xl p-12 rounded-3xl border border-white/20 shadow-[0_30px_80px_rgba(0,0,0,0.7)] max-w-3xl">
+<div class="relative z-10 bg-black/50 backdrop-blur-2xl p-12 rounded-3xl border border-white/20 shadow-[0_30px_80px_rgba(0,0,0,0.7)] max-w-3xl mx-4">
 
 <h1 class="text-5xl md:text-6xl font-extrabold text-[#ffd166] mb-6">
 WELCOME TO <br> KLE TECH IUCEE STUDENT CHAPTER
@@ -70,7 +75,6 @@ Empowering students through innovation, mentorship, and global collaboration.
 </div>
 </section>
 
-<!-- ================= ABOUT ================= -->
 <section class="py-24 px-6">
 <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-16 items-center">
 
@@ -94,7 +98,6 @@ We build engineers who think globally and act boldly.
 </div>
 </section>
 
-<!-- ================= CARDS ================= -->
 <section class="py-24 px-6">
 <div class="text-center mb-16">
 <h2 class="text-4xl font-bold text-[#ffd166]">Explore IUCEE</h2>
@@ -123,68 +126,58 @@ We build engineers who think globally and act boldly.
 </div>
 </section>
 
-<footer class="bg-[#2C1F15] text-[#f1efe6] px-6  mt-20">
-  <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-10 text-center md:text-left">
+<footer class="bg-[#2C1F15] text-[#f1efe6] px-6 mt-20">
+  <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-10 text-center md:text-left py-12">
   
-    <!-- Contact Us -->
-          <div>
-            <h1 class="text-xl font-bold mb-4">Contact Us</h1>
-            <div class="py-5">
-              <h2 >President : Venkatesh Kanago</h2>
-            </div>
-              <h2>Vice President : Arudha Goudar</h2>
-
-          <div class="py-5">
-            <h2 >Student Ambassador : Manushri K</h2>
-                  <p>Email: iuclubb@gmail.com</p>
-                  <p>Phone: +91 num</p>
-          </div>
+    <div>
+        <h1 class="text-xl font-bold mb-4">Contact Us</h1>
+        <div class="space-y-2">
+            <h2 class="font-semibold text-yellow-500">President: <span class="text-white font-normal">Venkatesh Kanago</span></h2>
+            <h2 class="font-semibold text-yellow-500">Vice President: <span class="text-white font-normal">Arudha Goudar</span></h2>
         </div>
 
-
-     <!-- Location -->
-  <div>
-    <h2 class="text-xl font-bold mb-4 mt-10">Location</h2>
-    <p>KLE Technological University</p>
-    <p>Hubballi, Karnataka - 580031</p>
-  
-    <a 
-      href="https://maps.app.goo.gl/hyX1S1sKHKa4kPjx6" 
-      target="_blank" 
-      class="text-yellow-300 hover:underline mt-2 inline-block"
-    >
-      View on Map
-    </a>
-  </div>
-  
-  
-      <!-- Follow Us -->
-      <div>
-        <h2 class="text-xl font-bold mb-4">Follow Us</h2>
-        <div class="flex justify-center md:justify-start gap-4">
-          <a href="https://www.instagram.com/kletechiuceechapter?igsh=MXJjZXB3a3poNnB5eA==" class="hover:text-yellow-400" target="_blank">
-           <img src="images/instagram (4).png" class="w-[30px]">
-          </a>
-          <a href="https://www.linkedin.com/company/iucee-kletu/" class="hover:text-yellow-400" target="_blank">
-           <img src="images/linkedin (2).png" class="w-[30px]">
-          </a>
+        <div class="mt-6 space-y-1">
+            <h2 class="font-semibold text-yellow-500">Student Ambassador: <span class="text-white font-normal">Manushri K</span></h2>
+            <p class="text-sm opacity-80">Email: kletech.iucee@gmail.com</p>
+            <p class="text-sm opacity-80">Phone: +91 97395 94110</p>
         </div>
-      </div>
-  
     </div>
-      <div>
-        <p class="text-center text-sm mt-10">&copy; 2026 KLETECH IUCEE Club. All rights reserved.</p>
-      </div>
-  </footer>
-</div>
 
-<!-- ================= THREE JS SCRIPT ================= -->
+    <div>
+        <h2 class="text-xl font-bold mb-4">Location</h2>
+        <p>KLE Technological University</p>
+        <p>Hubballi, Karnataka - 580031</p>
+        <a href="https://maps.google.com" target="_blank" class="text-yellow-400 hover:underline mt-4 inline-block font-semibold">
+            View on Map
+        </a>
+    </div>
+
+    <div>
+        <h2 class="text-xl font-bold mb-4">Follow Us</h2>
+        <div class="flex justify-center md:justify-start gap-6">
+            <a href="https://www.instagram.com/kletechiuceechapter" target="_blank" class="hover:scale-110 transition-transform">
+                <img src="images/instagram (4).png" class="w-[35px]" alt="Instagram">
+            </a>
+            <a href="https://www.linkedin.com/company/iucee-kletu/" target="_blank" class="hover:scale-110 transition-transform">
+                <img src="images/linkedin (2).png" class="w-[35px]" alt="LinkedIn">
+            </a>
+        </div>
+    </div>
+
+  </div>
+
+  <div class="border-t border-white/10 py-8">
+    <p class="text-center text-sm opacity-60">© 2026 KLETECH IUCEE Club. All rights reserved.</p>
+  </div>
+</footer>
+
 <script>
 const canvas = document.getElementById("bgCanvas");
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1, 1000);
-const renderer = new THREE.WebGLRenderer({canvas: canvas, alpha: true});
+const renderer = new THREE.WebGLRenderer({canvas: canvas, alpha: true, antialias: true});
 renderer.setSize(window.innerWidth, window.innerHeight);
+renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 
 camera.position.z = 5;
 
@@ -226,10 +219,18 @@ function animate() {
 
 animate();
 
+/* Resize Fix */
 window.addEventListener("resize", () => {
   renderer.setSize(window.innerWidth, window.innerHeight);
   camera.aspect = window.innerWidth/window.innerHeight;
   camera.updateProjectionMatrix();
+});
+
+/* Mobile Menu Toggle */
+const toggleBtn = document.getElementById('menu-toggle');
+const navLinks = document.getElementById('nav-links');
+toggleBtn.addEventListener('click', () => {
+  navLinks.classList.toggle('hidden');
 });
 </script>
 
