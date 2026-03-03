@@ -35,7 +35,7 @@
     
     <section class="text-center pt-10 px-4">
       <div class="max-w-4xl mx-auto">
-        <h2 class="text-4xl font-bold text-[#563b1e] mb-2">Sustainable Industry Sprint</h2>
+        <h2 class="text-4xl font-bold text-[#563b1e] mb-2">Sustainable Industry Sprint [cite: 1]</h2>
         <p class="text-lg text-gray-700 font-semibold bg-white/40 inline-block px-6 py-1 rounded-full backdrop-blur-sm">
             March 11th | 1:30 PM | SoECE Seminar Hall
         </p>
@@ -46,7 +46,7 @@
       <form id="sprintForm" class="w-full max-w-lg bg-[#ffface]/90 shadow-2xl rounded-xl p-8 space-y-5 border-t-8 border-[#fece40]">
         <h2 class="text-2xl font-semibold text-center text-[#563b1e]">Register Your Team</h2>
         <p class="text-center text-sm text-gray-600 italic font-medium">
-            * Note: Teams must consist of exactly 2-4 members
+            * Note: Teams must consist of 2 to 4 members 
         </p>
 
         <div class="space-y-4">
@@ -69,12 +69,17 @@
             </div>
         </div>
 
-        <div class="space-y-3">
-            <label class="block text-sm font-bold text-[#563b1e]">Other Team Members (Required)</label>
+        <div id="memberList" class="space-y-3">
+            <label class="block text-sm font-bold text-[#563b1e]">Other Team Members (Min: 1 additional)</label>
             <input type="text" name="member2" placeholder="Member 2 Full Name" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#fece40] outline-none" />
-            <input type="text" name="member3" placeholder="Member 3 Full Name" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#fece40] outline-none" />
-            <input type="text" name="member4" placeholder="Member 4 Full Name" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#fece40] outline-none" />
         </div>
+
+        <button type="button" id="add-member-btn" class="text-sm font-bold text-[#A47D06] hover:text-[#563b1e] transition-colors flex items-center gap-1">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
+            </svg>
+            Add Member (Max 4)
+        </button>
 
         <div class="pt-2 border-t border-gray-200">
             <label class="block mb-1 text-sm font-medium text-gray-600">Referral Code (Optional)</label>
@@ -96,7 +101,7 @@
           </svg>
           View Full Rule Book (PDF)
         </a>
-        <p class="mt-4 text-xs text-gray-700 italic">Please review the rules before submitting. Participants must bring their own laptops.</p>
+        <p class="mt-4 text-xs text-gray-700 italic">Please review the rules regarding interdisciplinary teams [cite: 51] and permitted resources [cite: 62] before submitting. Participants must bring their own laptops.</p>
       </div>
     </section>
 
@@ -150,6 +155,29 @@
       navLinks.classList.toggle('hidden');
     });
 
+    // Dynamic Member Logic
+    let memberCount = 2;
+    const maxMembers = 4;
+    const memberList = document.getElementById('memberList');
+    const addMemberBtn = document.getElementById('add-member-btn');
+
+    addMemberBtn.addEventListener('click', () => {
+      if (memberCount < maxMembers) {
+        memberCount++;
+        const input = document.createElement('input');
+        input.type = 'text';
+        input.name = `member${memberCount}`;
+        input.placeholder = `Member ${memberCount} Full Name`;
+        input.className = 'w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#fece40] outline-none';
+        memberList.appendChild(input);
+        
+        // Hide button if limit reached
+        if (memberCount === maxMembers) {
+          addMemberBtn.style.display = 'none';
+        }
+      }
+    });
+
     // Form Submission
     document.getElementById('sprintForm').addEventListener('submit', async function(e) {
         e.preventDefault();
@@ -169,6 +197,12 @@
             if (response.ok) {
                 alert(`Successfully Registered!\nYour ID: ${result.regId}\nPlease check your email for confirmation.`);
                 this.reset();
+                // Reset dynamic fields
+                while (memberList.children.length > 2) {
+                   memberList.removeChild(memberList.lastChild);
+                }
+                memberCount = 2;
+                addMemberBtn.style.display = 'flex';
             } else {
                 alert('Error: ' + (result.message || 'Registration failed'));
             }
